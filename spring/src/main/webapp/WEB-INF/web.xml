@@ -3,19 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!-- (Context) applicationContext.xml에서 설정한 Bean >> 모든 서블릿, 필터 공유 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
+
+    <!-- 서블릿과 필터에 공유 할 수 있도록 리스너를 설정 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
 
-
+    <!-- (Context) dispatcher에 대한 설정 -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- dispatcher에 대한 서블릿 설정 파일 경로 설정 -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
@@ -23,8 +27,10 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!-- 클라이언트에서 '/'으로 시작되는 경로로 요청되는 경우 dispatcher가 처리함. -->
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>
+
