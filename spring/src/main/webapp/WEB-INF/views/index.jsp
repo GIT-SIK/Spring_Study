@@ -13,10 +13,11 @@
     Controller String Data : ${tempString}
     <hr>
 
-    <%--
-    <c:forEach var="tempListData" items="${tempList}" varStatus="status">
-      Controller List[${status.count}}] Data : <c:out value="${tempListData}"/>
-    </c:forEach>
-    %-->
-  </body>
+
+  <c:forEach var="tempListData" items="${tempList}" varStatus="status">
+    Controller List[${status.count}}] Data : <c:out value="${tempListData}"/>
+  </c:forEach>
+
+
+</body>
 </html>

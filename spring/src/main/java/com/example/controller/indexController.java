@@ -17,9 +17,9 @@ public class indexController {
         for(int num=0; num<=3; num++){
             tempList.add("tempList" + "[" + num + "]");
         }
-        /* model.addAttribute("tempList", tempList);
+        model.addAttribute("tempList", tempList);
         model.addAttribute("tempString", tempString);
-        */
+
 
     return "index";
     }
