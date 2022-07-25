@@ -1,13 +1,17 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.service.IndexService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class IndexController {
-
+    private final Logger logger = LoggerFactory.getLogger(IndexController.class);
     /* **************** final 생성자 주입 **************** */
     private final IndexService indexService;
 
@@ -21,7 +25,7 @@ public class IndexController {
 
     @GetMapping({"/", ""})
     public String index (Model model){
-
+        logger.info("info : Test");
         String temp = "Temp Data";
         model.addAttribute("temp", temp);
 
