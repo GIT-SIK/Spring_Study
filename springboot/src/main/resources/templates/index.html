@@ -8,5 +8,9 @@
 </head>
 <body>
     <span th:value="${temp}"> </span>
+
+    <th:block th:each="rd : ${rdList}">
+        <div th:text="${rd.idx}" > </div>
+    </th:block>
 </body>
 </html>

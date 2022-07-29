@@ -1,11 +1,16 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.domain.ResponsiveData;
 import com.example.springboot.service.IndexService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+
 @Controller
 public class IndexController {
     private final Logger logger = LoggerFactory.getLogger(IndexController.class);
@@ -22,9 +27,13 @@ public class IndexController {
 
     @GetMapping({"/", ""})
     public String index (Model model){
+
+        List<ResponsiveData> responsiveDataList = indexService.findAllResponsiveData();
+
         logger.info("info : Test");
         String temp = "Temp Data";
         model.addAttribute("temp", temp);
+        model.addAttribute("rdList", responsiveDataList);
 
         return "index";
     }
